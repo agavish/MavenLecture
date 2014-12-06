@@ -1,4 +1,4 @@
-package com.howtodoinjava;
+package com.maven.lecture.example;
 
 import com.maven.lecture.example.NumbersDatabase;
 import com.maven.lecture.example.NumbersDatabaseImpl;

@@ -1,4 +1,4 @@
-package com.howtodoinjava;
+package com.maven.lecture.example;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
