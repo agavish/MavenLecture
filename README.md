@@ -4,6 +4,8 @@ MavenLecture
 This is the example code of the maven lecture
 
 This is a simple example of:
+
+
 1.  Dependency Management
 
 
