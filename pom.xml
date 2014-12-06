@@ -10,6 +10,7 @@
 
 	<build>
 		<plugins>
+			<!-- This plugin build and pack the .jar file -->
 			<plugin>
 				<!-- Build an executable JAR -->
 				<groupId>org.apache.maven.plugins</groupId>
@@ -29,6 +30,8 @@
 					</archive>
 				</configuration>
 			</plugin>
+
+			<!-- This plugin pack the jar with all 3rd party jar files -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -56,11 +59,18 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.9.5</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
 			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.46.0</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
