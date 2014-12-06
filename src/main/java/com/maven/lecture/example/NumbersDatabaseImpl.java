@@ -1,24 +1,47 @@
 package com.maven.lecture.example;
 
-import java.util.Date;
-import java.util.Random;
+import java.net.UnknownHostException;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 
 public class NumbersDatabaseImpl implements NumbersDatabase {
 
-	/**
-	 * This function return a random number from database only until the year of 2016
-	 */
-	public Integer getNumberFromDB() {
-		/**
-		 * In this function, the class return a number from the database
-		 * using the database logic structure, and its java connector
-		 */
-		Date date = new Date();
+	MongoClient mongo = null;
+	
+	public void createDB() throws UnknownHostException {
+		mongo = new MongoClient( "localhost" , 27017 );
+		DB db = mongo.getDB("numbers");
+		DBCollection table = db.getCollection("numberscollection");
+
+		BasicDBObject document = new BasicDBObject();
+		document.put("number", 3);
+		table.insert(document);
 		
-		if (date.getYear() <= 2016) {
-			return new Random().nextInt(10);			
-		} else {
-			return null;
+		mongo.close();
+	}
+	
+	public Integer getNumberFromDB() throws UnknownHostException {
+		
+		Integer number = null;
+		mongo = new MongoClient( "localhost" , 27017 );
+		DB db = mongo.getDB("numbers");
+		DBCollection table = db.getCollection("numberscollection");
+		
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("number", 3);
+	 
+		DBCursor cursor = table.find(searchQuery);
+	 
+		while (cursor.hasNext()) {
+			DBObject next = cursor.next();
+			number = (Integer) next.get("number");
 		}
+		
+		return number;
 	}
 }

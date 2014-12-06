@@ -1,16 +1,18 @@
 package com.maven.lecture.example;
 
+import java.net.UnknownHostException;
+
 public class App
 {
-	public static void main(String[] args) {
-		System.out.println(sumTwoRandomNumbersFromDB());
+	public static void main(String[] args) throws UnknownHostException {
+		NumbersDatabase numbersDatabase = new NumbersDatabaseImpl();
+		System.out.println(sumTwoRandomNumbersFromDB(numbersDatabase));
 	}
 
-	public static Integer sumTwoRandomNumbersFromDB() {
-		NumbersDatabase numbers = new NumbersDatabaseImpl();
+	public static Integer sumTwoRandomNumbersFromDB(NumbersDatabase numbersDatabase) throws UnknownHostException {
 
-		Integer a = numbers.getNumberFromDB();
-		Integer b = numbers.getNumberFromDB();
+		Integer a = numbersDatabase.getNumberFromDB();
+		Integer b = numbersDatabase.getNumberFromDB();
 
 		return a + b;
 	}
