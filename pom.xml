@@ -31,6 +31,30 @@
 				</configuration>
 			</plugin>
 
+			<!-- Unit Test plugin -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18</version>
+			</plugin>
+
+			<!-- Integration Test plugin -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.18</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- This plugin pack the jar with all 3rd party jar files -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -56,6 +80,11 @@
 		</dependency>
 
 		<!-- Unit Test -->
+		<dependency>
+			<groupId>junit</groupId>     <!-- NOT org.junit here -->
+			<artifactId>junit-dep</artifactId>
+			<version>4.8.2</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

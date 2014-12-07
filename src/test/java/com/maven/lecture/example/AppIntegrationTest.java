@@ -3,6 +3,10 @@ package com.maven.lecture.example;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import junit.framework.Assert;
+
+import org.junit.Test;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -15,10 +19,8 @@ import de.flapdoodle.embed.mongo.config.IMongodConfig;
 import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
-import junit.framework.Assert;
-import junit.framework.TestCase;
 
-public class AppIntegrationTest extends TestCase {
+public class AppIntegrationTest {
 
 	MongodExecutable	mongodExecutable	= null;
 
@@ -45,6 +47,7 @@ public class AppIntegrationTest extends TestCase {
 	 * 
 	 * @throws UnknownHostException
 	 */
+	@Test
 	public void testDatabaseIntegration() throws UnknownHostException {
 		/**
 		 * No mocks here, real embedded mongoDb is been loaded during the test
