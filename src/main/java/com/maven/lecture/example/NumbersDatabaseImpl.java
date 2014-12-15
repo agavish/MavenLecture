@@ -13,18 +13,9 @@ public class NumbersDatabaseImpl implements NumbersDatabase {
 
 	MongoClient mongo = null;
 	
-	public void createDB() throws UnknownHostException {
-		mongo = new MongoClient( "localhost" , 27017 );
-		DB db = mongo.getDB("numbers");
-		DBCollection table = db.getCollection("numberscollection");
-
-		BasicDBObject document = new BasicDBObject();
-		document.put("number", 3);
-		table.insert(document);
-		
-		mongo.close();
-	}
-	
+	/*
+	 * This is the module we want to integration test
+	 */
 	public Integer getNumberFromDB() throws UnknownHostException {
 		
 		Integer number = null;
@@ -41,6 +32,8 @@ public class NumbersDatabaseImpl implements NumbersDatabase {
 			DBObject next = cursor.next();
 			number = (Integer) next.get("number");
 		}
+		
+		mongo.close();
 		
 		return number;
 	}
